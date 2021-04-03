@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate')%>
+<div style="width: 500px; margin: auto;">
+    <h1 style="text-align: center; margin-top: 50px; margin-bottom: 40px;">Profile</h1>
+    <form action="/profile?_method=PUT" method="POST" class="validated-form" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" id="username" name="username" value="<%= currentUser.username %>" readonly>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" value="<%= currentUser.email %>" readonly>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="companyname">Company Name</label>
+            <input class="form-control" type="text" id="companyname" name="companyname" value="<%= currentUser.companyname %>">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="address">Address</label>
+            <textarea class="form-control" type="text" id="address" name="address"><%= currentUser.address %></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="panNo">PAN Number</label>
+            <input class="form-control" type="text" id="panNo" name="panNo" value="<%= currentUser.panNo %>">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="gstNo">GST Number</label>
+            <input class="form-control" type="text" id="gstNo" name="gstNo" value="<%= currentUser.gstNo %>">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;">Update Profile</button>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://trusthousepublishers.com/wp-content/uploads/2016/10/Pricing-Background.jpg");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-menu-dark .dropdown-item {
+    background-color: #212529;
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link, .dropdown-item {
+    color: white;
+}
+
+.dropdown-menu {
+    background: none;
+    border: none;
+}
+
+.dropdown-item:hover {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+main p {
+    padding-top: 30px;
+    width: 40%;
+    margin: 0 auto;
+    line-height: 30px;
+    color: rgba(255,255,255,.8);
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color: #333;
+    text-shadow: none;
+}

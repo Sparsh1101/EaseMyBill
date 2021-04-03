@@ -1,0 +1,64 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center" style="margin-bottom: 40px;">Add Product</h1>
+    <div class="col-6 offset-3">
+        <form action="/products" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Product Name</label>
+                <input class="form-control" type="text" id="title" name="product[title]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="company">Company Name</label>
+                <input class="form-control" type="text" id="company" name="product[company]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">₹</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                        aria-describedby="price-label" name="product[price]" required>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="tax">Tax%</label>
+                <input class="form-control" type="text" id="tax" name="product[tax]"  placeholder="0"  required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="stock">Stock</label>
+                <input class="form-control" type="text" id="stock" name="product[stock]"  placeholder="0"  required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="product[description]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div style="display: flex;justify-content: space-between;">
+                <div class="mb-3">
+                    <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/products">All Products</a>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-success" style="border-radius: 12px;font-size: 15px;">Add Product</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>

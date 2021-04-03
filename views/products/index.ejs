@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate')%>
+<div class="container">
+    <h1 style="text-align:center; margin-bottom:20px;">All Products</h1>
+    <div style="text-align:right; margin-bottom:20px;">
+        <a class="btn btn-outline-dark" style="border-radius:12px; font-size: 15px;" href="/products/new">Add Product</a>
+    </div>
+    <div class="row mb-5">
+        <% for (let product of products){%>
+            <div class="card text-dark" style="width:19rem; margin:10px; border:solid 1px black; background-color:white;">
+                <div class="card-body float-bottom">
+                    <h2 class="card-title" style="font-size: 18px; text-transform: capitalize;"><%= product.title %></h2>
+                    <div>
+                        <a class="btn btn-outline-dark" style="border-radius:12px; font-size:15px;"  href="/products/<%=product._id%>">View</a>
+                    </div>
+                </div>
+            </div>
+        <% }%>  
+    </div>
+</div>
