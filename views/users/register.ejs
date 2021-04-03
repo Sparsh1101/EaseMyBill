@@ -1,28 +1,36 @@
 <% layout('layouts/boilerplate')%>
-<div style="width: 500px; margin: auto;">
-    <h1 style="text-align: center; margin-top: 50px; margin-bottom: 40px;">Register</h1>
-    <form action="/register" method="POST" class="validated-form" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" id="username" name="username" required>
-            <div class="valid-feedback">
-                Looks good!
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-8 offset-xl-2">
+            <div class="card shadow">
+                <img src="https://www.viveat.com/wp-content/uploads/2018/03/03_sito_articolo_MI_Product_registration-1.jpg" style='max-width: 650px;' alt="">
+                <div class="card-body">
+                    <form action="/register" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark btn-block" style="border-radius: 12px;font-size: 15px;">Register</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" id="email" name="email" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input class="form-control" type="password" id="password" name="password" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;">Register</button>
-    </form>
+    </div>
 </div>

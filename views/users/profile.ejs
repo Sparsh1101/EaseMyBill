@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <div class="card-body d-flex flex-column " style="align-items: center;">
+                <h5 class="card-title"><b>Profile Details</b></h5>
+                <hr style="width: 80%;opacity: 0.1;">
+            </div>
+            <div style="margin: 0 100px;">
+                <table class="table table-borderless" >
+                    <tr>
+                        <td><b>Username</b></td>
+                        <% if (currentUser.username){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.username %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td><b>Email Id</b></td>
+                        <% if (currentUser.email){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.email %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td><b>Company Name</b></td>
+                        <% if (currentUser.companyname){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.companyname %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <% if (currentUser.address){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.address %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td><b>PAN Number</b></td>
+                        <% if (currentUser.panNo){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.panNo %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px;"><b>GST Registration Number</b></td>
+                        <% if (currentUser.gstNo){ %>
+                            <td><p class="card-text" style="margin-left: 50px;"><%= currentUser.gstNo %></p></td>
+                        <% } else { %>
+                            <td><p class="card-text" style="margin-left: 50px;">--Not Added--</p></td>
+                        <% } %>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/profile/edit">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>

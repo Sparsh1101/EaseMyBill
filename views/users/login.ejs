@@ -1,22 +1,32 @@
 <% layout('layouts/boilerplate')%>
-<div style="width: 500px; margin: auto;">
-    <h1 style="text-align: center; margin-top: 50px; margin-bottom: 40px;">Login</h1>
-    <form action="/login" method="POST" class="validated-form" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" id="username" name="username" required>
-            <div class="valid-feedback">
-                Looks good!
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-8 offset-xl-2">
+            <div class="card shadow">
+                <img src="https://www.simplybusiness.co.uk/static/79c379f5a8ed62cfc495746e47b17f9d/a6352/header.jpg" style='max-width: 650px;' alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form action="/login" method="POST" class="validated-form" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark btn-block" style="border-radius: 12px;font-size: 15px;">Login</button>
+                    </form>
+                </div>
             </div>
         </div>
-    
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input class="form-control" type="password" id="password" name="password" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;">Login</button>
-    </form>
+
+    </div>
 </div>

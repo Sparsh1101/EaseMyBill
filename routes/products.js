@@ -4,6 +4,10 @@ const catchAsync = require('../utils/catchAsync');
 const { productSchema } = require('../schemas.js');
 const { isLoggedIn } = require('../middleware');
 
+const multer = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
+
 const ExpressError = require('../utils/ExpressError');
 const Product = require('../models/product');
 
@@ -27,10 +31,11 @@ router.get('/new', isLoggedIn, (req, res) => {
 })
 
 
-router.post('/', isLoggedIn,validateProduct, catchAsync(async (req, res, next) => {
+router.post('/', isLoggedIn, upload.array('image'), validateProduct, catchAsync(async (req, res, next) => {
     var { title, image, price, description, company, stock, tax } = req.body.product;
     title = title.toLowerCase();
     const product = new Product({ title, price, description, company, stock, tax });
+    product.image = {url: req.files[0].path, filename: req.files[0].filename};
     await product.save();
     req.flash('success', 'Successfully made a new product!');
     res.redirect(`/products/${product._id}`)
@@ -54,10 +59,14 @@ router.get('/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
     res.render('products/edit', { product });
 }))
 
-router.put('/:id', isLoggedIn,validateProduct, catchAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, upload.array('image'), validateProduct, catchAsync(async (req, res) => {
     const { id } = req.params;
     const product = await Product.findByIdAndUpdate(id, { ...req.body.product });
-    await product.save();
+    console.log(req.files)
+    if (req.files.length > 0) {
+        product.image = {url: req.files[0].path, filename: req.files[0].filename};
+        await product.save();
+    }
     req.flash('success', 'Successfully updated product!');
     res.redirect(`/products/${product._id}`)
 }));

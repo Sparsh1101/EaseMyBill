@@ -11,3 +11,12 @@ module.exports.productSchema = Joi.object({
         tax: Joi.number().required().min(0),
     }).required()
 });
+
+module.exports.customerSchema = Joi.object({
+    customer: Joi.object({
+        custName: Joi.string().required(),
+        custMail: Joi.string(),
+        custPhone: Joi.number().required().min(1000000000).max(9999999999),
+        
+    }).required()
+});

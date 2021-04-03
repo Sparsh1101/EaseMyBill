@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">Edit Product</h1>
+    <div class="col-6 offset-3">
+        <form action="/products/<%=product._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="product[title]"
+                    value="<%=product.title %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="company">Company</label>
+                <input class="form-control" type="text" id="company" name="product[company]"
+                    value="<%=product.company %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Replace Image</label>
+                <input class="form-control" type="file" id="image" name="image">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Product Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">₹</span>
+                    <input type="text" class="form-control" id="price" aria-label="price"
+                        aria-describedby="price-label" name="product[price]" value="<%=product.price %>"
+                        required><div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="tax">Tax%</label>
+                <input class="form-control" type="text" id="tax" name="product[tax]" value="<%=product.tax%>">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="stock">Stock</label>
+                <input class="form-control" type="text" id="stock" name="product[stock]" value="<%=product.stock %>" placeholder="0">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="product[description]"
+                    required><%= product.description%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;">Update Product</button>
+            </div>
+        </form>
+        <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/products/<%= product._id%>">Back To Product</a>
+
+    </div>
+</div>
