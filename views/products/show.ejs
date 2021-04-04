@@ -1,16 +1,16 @@
 <% layout('layouts/boilerplate')%>
 <div class="row">
     <div class="col-6 offset-3">
-        <div class="card mb-3">
+        <div class="card shadow mb-3" style="border-radius: 20px;">
             <img class="card-img-top" src="<%= product.image.url %>" alt="" style="max-width: 500px;max-height: 500px;align-self: center;margin-top: 20px;">
             <div class="card-body">
                 <h5 class="card-title" style="text-transform: capitalize;"><%= product.title%></h5>
                 <p class="card-text"><%= product.description%></p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="text-transform: capitalize;"><%= product.company%></li>
-                <li class="list-group-item">₹ <%= product.price%> (+ taxes)</li>
-                <li class="list-group-item"><%= product.stock%></li>
+                <li class="list-group-item" style="text-transform: capitalize;"><b>Comany: </b><%= product.company%></li>
+                <li class="list-group-item"><b>Price: </b>₹ <%= product.price%> (+ taxes)</li>
+                <li class="list-group-item"><b>Stock: </b><%= product.stock%></li>
             </ul>
             <div class="card-body">
                 <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/products/<%=product._id%>/edit">Edit</a>

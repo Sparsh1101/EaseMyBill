@@ -23,7 +23,7 @@
     </div>
     <div class="row mb-5">
         <% for (let product of products){ %>
-            <div class="card text-dark" style="width:19rem; margin:10px; border:solid 1px black; background-color:white;">
+            <div class="card shadow text-dark" style="width:19rem; margin:10px; border-radius: 20px; background-color:white;">
                 <img class="card-img-top" style="height:300px; width:250px; align-self:center; margin-top:20px;"src="<%=product.image.url %>">
                 <div class="card-body float-bottom">
                     <h2 class="card-title" style="font-size: 18px; text-transform: capitalize;"><%= product.title %></h2>
