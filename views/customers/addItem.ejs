@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div class="col-6 offset-3 mt-3">
+    <h1 class="mb-5"><center>Add Product</center></h1>
+    <form action="/customers/bill/<%= custid %>/createBill" method="POST" novalidate class="validated-form">
+        <div class="mb-3">
+            <label class="form-label" for="title">Name of Product</label>
+            <input class="form-control" type="text" id="title" name="product[productName]" required>
+            <div class="valid-feedback" style="color: rgb(145, 119, 50);">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="quantity">Quantity</label>
+            <input class="form-control" type="text" id="quantity" name="product[qty]" required>
+            <div class="valid-feedback" style="color: rgb(145, 119, 50);">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" >Add Product</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function() {
+        $('#title').autocomplete({
+            source: function(req, res) {
+                $.ajax({
+                    url: "customers/autocompleteProduct/",
+                    dataType: "jsonp",
+                    type: "GET",
+                    data: req,
+                    success: function(data) {
+                        console.log(data)
+                        res(data)
+                    },
+                    error: function(err) {
+                        console.log(err.status);
+                    }
+                })
+            },
+            minLength: 1,
+            select: function(event, ui) {
+                if(ui.item) {
+                    $('#title').text(ui.item.label);
+                }
+            }
+        });
+    });
+</script> 

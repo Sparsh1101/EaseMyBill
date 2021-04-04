@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate')%>
+<div class="col-8 offset-2" style="background-color: white; padding: 40px; margin-bottom: 20px;">
+    <div class="d-flex" style="justify-content: space-between;">
+        <p style="font-family: 'Lobster', cursive; font-size: 30px;"><span style="color: rgb(255, 104, 49);">Ease</span>MyBill</p>
+        <div style="padding-top: 7px;">
+            <p style="margin-bottom: 0;"><b>Tax Invoice/Bill of Supply/Cash Memo</b></p>
+            <p style="text-align: right;">(Original for Recipient)</p>
+        </div>
+    </div>
+    <div class="d-flex" style="justify-content: space-between; margin-top: 30px;">
+        <div style="width: 350px;">
+            <% if (currentUser.companyname) { %>
+                <p style="margin-bottom: 5px; text-transform: uppercase;"><b>Sold By: </b><%= currentUser.companyname %></p>
+            <% } %>
+            <% if (currentUser.address) { %>
+                <p style="margin-bottom: 30px; text-transform: uppercase; width: 300px;"><%= currentUser.address %></p>
+            <% } %> 
+            <% if (currentUser.panNo) { %>
+                <p style="margin-bottom: 0;"><b>PAN NO: </b><%= currentUser.panNo %></p>
+            <% } %> 
+            <% if (currentUser.gstNo) { %>
+                <p style="margin-bottom: 30px;"><b>GST REGISTRATION NO: </b><%= currentUser.gstNo %></p>
+            <% } %> 
+            <p style="margin-bottom: 0;"><b>Order Number: </b><%= bill._id%></p>
+            <p style="margin-bottom: 30px;"><b>Order Date: </b><%= bill.orderDate %></p>
+        </div>
+        <div>
+            <p style="margin-bottom:5px; text-transform: capitalize;"><b>Customer Name: </b><%= bill.customer.custName%></p>
+            <p style="margin-bottom:5px;"><b>Phone Number: </b><%= bill.customer.custPhone%></p>
+            <% if (bill.customer.custMail != '') { %> 
+                <p style="margin-bottom:5px;"><b>Email Id: </b><%= bill.customer.custMail %></p>
+            <% } %> 
+        </div>
+    </div>
+    <table class="table table-striped mt-5" style="border:solid 1px black; width:100%;">
+        <tr style="background-color: rgb(75, 78, 83);">
+            <th style="border:1px solid black; text-align: center;color: white;">Product Name</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Product Price</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Quantity</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Net Amount</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Tax Rate</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Tax Amount</th>
+            <th style="border:1px solid black; text-align: center;color: white;">Total Amount</th>
+        </tr> 
+        <% for(let i of bill.billProducts ) { %>
+            <tr>
+                <td style="border:1px solid black; text-align: center; text-transform: capitalize;"><%= i.productName %></td>
+                <td style="border:1px solid black; text-align: center;">₹ <%= i.productPrice %></td>
+                <td style="border:1px solid black; text-align: center;"><%= i.quantity %></td>
+                <td style="border:1px solid black; text-align: center;">₹ <%= i.totalProductPrice %></td>
+                <td style="border:1px solid black; text-align: center;"><%= i.tax %>%</td>
+                <td style="border:1px solid black; text-align: center;">₹ <%= (i.totalProductPrice*i.tax)/100 %></td>
+                <td style="border:1px solid black; text-align: center;">₹ <%= i.totalProductPrice+((i.totalProductPrice*i.tax)/100) %></td>
+            </tr>
+        <% } %>
+        <tr style="background-color: rgb(75, 78, 83);">
+            <td colspan="7" style="text-align: right; color: white;"><b>Grand Total: ₹ <%= bill.billPrice %></b></td>
+        </tr> 
+    </table>
+    <a class="btn btn-outline-success me-2" style="border-radius: 12px;font-size: 15px;" href="/bills/<%=bill._id%>/pdf">Download PDF</a>
+    <a class="btn btn-outline-success me-2" style="border-radius: 12px;font-size: 15px;" href="/bills/<%=bill._id%>/mail">Send Mail</a>
+    <form class="d-inline" action="/bills/<%= bill.customerId._id %>/<%=bill._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-outline-danger" style="border-radius: 12px;font-size: 15px;">Delete</button>
+    </form>
+</div>
+
+<script type="javascript">
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
+</script>

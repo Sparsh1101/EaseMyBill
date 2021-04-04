@@ -13,16 +13,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merienda:wght@400;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Signika:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Signika:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <style>
         body {
             min-height: 100vh;
+            background-color: rgb(217, 251, 255);
         }
+
         .dropdown-menu-dark .dropdown-item {
             background-color: #212529;
             color: white;
         }
+
         .navbar-dark .navbar-nav .nav-link {
             color: white;
         }
@@ -30,17 +35,17 @@
 
 </head>
 
-<body style="background: rgb(254, 255, 213); font-family: 'Merriweather', serif;" class="d-flex flex-column">
+<body style="font-family: 'Merriweather', serif;" class="d-flex flex-column">
     <%- include('../partials/navbar')%>
-        <main class="container mt-5 mb-3"style="min-height: 70vh;">
+        <main class="container mt-5 mb-3" style="min-height: 70vh;">
             <%- include('../partials/flash')%>
                 <%- body %>
         </main>
         <%- include('../partials/footer')%>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
-        <script src='/javascripts/validateForms.js'></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+                crossorigin="anonymous"></script>
+            <script src='/javascripts/validateForms.js'></script>
 </body>
 
 </html>

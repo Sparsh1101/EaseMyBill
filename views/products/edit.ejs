@@ -56,11 +56,10 @@
                     Looks good!
                 </div>
             </div>
-            <div class="mb-3">
-                <button class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;">Update Product</button>
+            <div class="mb-3 d-flex justify-content-between">
+                <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/products/<%= product._id%>">Back To Product</a>
+                <button class="btn btn-outline-success" style="border-radius: 12px;font-size: 15px;">Update Product</button>
             </div>
         </form>
-        <a class="btn btn-outline-dark" style="border-radius: 12px;font-size: 15px;" href="/products/<%= product._id%>">Back To Product</a>
-
     </div>
 </div>

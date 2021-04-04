@@ -1,11 +1,28 @@
 <% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <div class="container">
     <h1 style="text-align:center; margin-bottom:20px;">All Products</h1>
-    <div style="text-align:right; margin-bottom:20px;">
-        <a class="btn btn-outline-dark" style="border-radius:12px; font-size: 15px;" href="/products/new">Add Product</a>
+    <form action="/products/search" method="GET">
+        <div class="d-flex" style="justify-content: center; align-items: center; width: 30%; margin: 0 auto;">
+            <input class="form-control" type="text" id="searchName" name="search" placeholder="Search By Product Name" value=<%= searchTitle%>>
+            <button class="btn btn-outline-dark" style="font-size: 15px;"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <div style="display: flex; justify-content: flex-end;">
+        <% if(searchTitle != '') {%>
+            <div style="text-align:right; margin-bottom:20px; margin-right: 20px;">
+                <a class="btn btn-outline-dark" style="border-radius:12px; font-size: 15px;" href="/products">All Products</a>
+            </div>
+        <% } %> 
+        <div style="text-align:right; margin-bottom:20px;">
+            <a class="btn btn-outline-success" style="border-radius:12px; font-size: 15px;" href="/products/new">Add Product</a>
+        </div>
     </div>
     <div class="row mb-5">
-        <% for (let product of products){%>
+        <% for (let product of products){ %>
             <div class="card text-dark" style="width:19rem; margin:10px; border:solid 1px black; background-color:white;">
                 <img class="card-img-top" style="height:300px; width:250px; align-self:center; margin-top:20px;"src="<%=product.image.url %>">
                 <div class="card-body float-bottom">
@@ -18,3 +35,31 @@
         <% }%>  
     </div>
 </div>
+
+<script>
+    $(function() {
+        $('#searchName').autocomplete({
+            source: function(req, res) {
+                $.ajax({
+                    url: "products/autocomplete/",
+                    dataType: "jsonp",
+                    type: "GET",
+                    data: req,
+                    success: function(data) {
+                        console.log(data)
+                        res(data)
+                    },
+                    error: function(err) {
+                        console.log(err.status);
+                    }
+                })
+            },
+            minLength: 1,
+            select: function(event, ui) {
+                if(ui.item) {
+                    $('#searchName').text(ui.item.label);
+                }
+            }
+        });
+    });
+</script>
