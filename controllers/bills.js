@@ -111,7 +111,7 @@ module.exports.createPDF = async(req,res) => {
             templateType: 'ejs',
         },
         fileName: 'invoice.pdf', 
-        filePath: '/Users/spars/Desktop/EaseMyBill/Invoice/' + req.user.username + '(' + req.user.invoiceCount + ')/',
+        filePath: './Invoice/' + req.user.username + '(' + req.user.invoiceCount + ')/',
       }
        
     templateToPdf(options)

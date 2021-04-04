@@ -68,7 +68,7 @@ module.exports.createBill = async (req, res) => {
                 totalProductPrice: price*qty,
                 tax:tax,
             });
-            bill.billPrice =(price*qty*tax)/100 + price*qty ;
+            bill.billPrice = ((price*qty*tax)/100 + price*qty).toFixed(2);
             customer.orders.push(bill);
             bill.customerId = customer;
             bill.customer.custName = customer.custName;
@@ -85,7 +85,7 @@ module.exports.createBill = async (req, res) => {
                 totalProductPrice: price*qty,
                 tax:tax,
             });
-            bill.billPrice = bill.billPrice + (price*qty*tax)/100 + price*qty ;
+            bill.billPrice = (bill.billPrice + (price*qty*tax)/100 + price*qty).toFixed(2) ;
             await bill.save();
         }
         res.redirect(`/customers/bill/${customer._id}/createBill`);
